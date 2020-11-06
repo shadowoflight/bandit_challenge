@@ -1,0 +1,239 @@
+used ssh
+then entered their server port ssh bandit0@bandit.labs.overthewire.org -p 2220
+
+logged in using password and id as bandit0
+level0-level1: 
+      1.ls to list file- readme
+      2.cat readme to view contents of file readme
+      password for nextlevel:boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+      logged out using exit.
+----------------------------------------------------------------------------------------------------------------
+level1-level2:
+      1.logged in again ls to list file
+      got file -
+      cat ./- suggesting current directory and enterd
+      got the password
+      password:CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+      exit 
+----------------------------------------------------------------------------------------------------------------
+level2-level3:
+      logged in again 
+      ls spaces in this filename
+      cat spaces\ in\ this\ filename
+      got the password
+      UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+      exit
+-----------------------------------------------------------------------------------------------------------------
+level3-level4:
+      logged in again
+      ls inhere
+      cd inhere
+      ls -a(for hidden files)
+      . .. .hidden(file)
+      cat .hidden
+      got password
+      pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+      exit
+----------------------------------------------------------------------------------------------------------------
+level4-level5:
+      logged in again
+      ls inhere
+      cd inhere
+      ls -a
+      .   -file00  -file02  -file04  -file06  -file08
+      ..  -file01  -file03  -file05  -file07  -file09
+      cat ./-file* gives all file
+      out of which file 07 in ascii code
+      : cat ./-file07
+      got password
+      koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+      exit
+-----------------------------------------------------------------------------------------------------------------
+level5-level6:
+      logged in again
+      ls inhere
+      cd inhere
+      ls 
+      20 files all are directory seen using cat *
+      now using find command to know file of 1033 bytes
+     : find ./-size 1033c
+      cat ./maybehere07/.file2
+      got password
+      DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+      exit
+------------------------------------------------------------------------------------------------------------------
+level6-level7:
+     ls -a
+     find / -size 33c -user bandit7 -group bandit6
+     many files appear
+     cat /var/lib/dpkg/info/bandit7.password
+     got password
+     HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+     exit
+--------------------------------------------------------------------------------------------------------------------
+level7-level8:
+     ls  data.txt
+     cat data.txt
+     many words appear
+     cat data.txt | grep -i millionth
+     millionth	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+     password: 	cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+     exit
+-------------------------------------------------------------------------------------------------------------------
+level8-level9:
+     ls data.txt
+     many passwords
+     sort data.txt | uniq -u
+     password:UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+     exit
+----------------------------------------------------------------------------------------------------------------------
+level9-level10:
+     ls data.txt
+     cat data.txt
+     many gibberish binary code
+     strings data.txt | grep  "="
+     got password
+     truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+     exit
+-----------------------------------------------------
+level10-level11:
+     ls data.txt
+     cat data.txt
+     long string of random stuff
+     base64 -d data.txt
+     password:IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+     exit
+-----------------------------------------------------
+level11-level12:
+    ls data.txt
+    cat data.txt
+    some string with spaces in between
+    string rotated 13 times
+    referred the website
+    www.rot13.com for deciphering the string
+    password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+    exit
+----------------------------------------------------
+level12-level13:
+    ls data.txt
+    cat data.txt
+    random stuff shows up
+    as the instructions say
+    mkdir -v /tmp/sanjana123
+    xxd -r data.txt /tmp/rose/data.txt
+    cd /tmp/rose
+    ls data.txt
+    file data.txt --it is a gzip file
+    zcat data.txt > r1
+    file new --- it is a bzip file 
+    bzip2 -d r1
+    zcat r1.out > r2
+    file r2
+    tar -xvf r2
+    file data5.bin
+    tar -xvf data5.bin
+    file data6.bin ---it is a bzip2 file
+    file data6.bin.out
+    tar -xvf data6.bin.out
+    file data8.bin
+    zcat dadat8.bin > r3
+    file r3
+    cat r3
+    password:8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+    exit
+----------------------------------------------------
+level13-level14:
+   ls sshkey.private
+   cat sshkey.private
+   ssh -i bandit14@localhost
+   we enter bandit 14
+   password: 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+------------------------------------------------------
+level14-level15:
+   to go to level 15
+   echo 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e | nc localhost 30000
+   we get password: BfMYroe26WYalil77FoDi9qh59eK5xNr
+   exit
+   exit
+-------------------------------------------------------  
+level15-level16:
+    openssl s_client -connect localhost:30001
+    enter BfMYroe26WYalil77FoDi9qh59eK5xNr
+    password for next level:cluFn7wTiGryunymYOu4RcffSxQluehd
+    exit
+-------------------------------------------------------
+level16-level17:
+   nmap wasnt there therfore downloaded nmap
+   and then
+   nmap -sv localhost -p 31000-32000
+   found the port
+   openssl s_client -connect localhost:31790
+   entered password:cluFn7wTiGryunymYOu4RcffSxQluehd
+   got a ssh rsa private key
+   -----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+   mkdir -v/tmp/puja
+   cd /tmp/puja
+   vi sshkey.private
+   chmod 600 sshkey.private
+   ssh -i sshkey.private bandit17@localhost
+   we enter level 17
+-------------------------------------------------------
+level17-level18:
+  ls
+  passwords.new passwords.old
+  diff  passwords.new passwords.old
+  we get password:kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+  exit
+
+----------------------------------------------------------
+level18-level19:
+   loggin 
+   enter password we automatically get logged out with amessage buybye
+   loggin again using
+   ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
+
+   got password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+---------------------------------------------------------
+level19-level20:
+   loggin  
+   ls
+   bandit20-do
+   ./bandit20-do cat /etc/bandit_pass/bandit20
+   got password:GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+---------------------------------------------------------
+lever20-level21: 
+  loggin
+  ls
+  susconnect
+  making a server nc -l 32222 < /etc/bandit_pass/bandit20 &
+
+  ./suconnect 32222
+  got password
+  exit
+---------------------------------------------------
